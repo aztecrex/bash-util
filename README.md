@@ -1,7 +1,7 @@
 # Bash Util
 
 I put these into a Dropbox folder then source them from
-.bashrc on each machine I use.
+```.bashrc``` on each machine I use.
 
 For example:
 
