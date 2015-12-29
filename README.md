@@ -10,3 +10,8 @@ for f in ~/Dropbox/Bash/setup_*; do
     . $f
 done
 ```
+
+----
+&copy; Greg Wiley
+
+License: BSD3 (see LICENSE)
