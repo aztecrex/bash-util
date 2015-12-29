@@ -6,7 +6,7 @@ I put these into a Dropbox folder then source them from
 For example:
 
 ```bash
-for f in ~/Dropbox/Bash/setup_*; do
+for f in ~/Dropbox/Bash/setup_*.sh; do
     . $f
 done
 ```
