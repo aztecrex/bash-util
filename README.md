@@ -1,5 +1,7 @@
 # Bash Util
 
+Now with 100% Gitter: [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/aztecrex/bash-util)
+
 I put these into a Dropbox folder then source them from
 ```.bashrc``` on each machine I use.
 
