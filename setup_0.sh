@@ -1,5 +1,5 @@
 # common functions
 
-am_mac() {
+am-mac() {
   test "$OSTYPE" = "darwin15"
 }

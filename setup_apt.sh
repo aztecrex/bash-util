@@ -1,6 +1,6 @@
 # update a specific repository
 
-if ! $(am_mac); then
+if ! $(am-mac); then
 
 update-repo() {
     for source in "$@"; do
