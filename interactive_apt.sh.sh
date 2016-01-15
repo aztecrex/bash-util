@@ -1,4 +1,7 @@
 # update a specific repository
+
+if ! $(am-mac); then
+
 update-repo() {
     for source in "$@"; do
         sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/${source}" \
@@ -16,3 +19,5 @@ _ppa_lists(){
     return 0
 } &&
 complete -F _ppa_lists update-repo
+
+fi

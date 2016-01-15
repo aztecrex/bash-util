@@ -2,15 +2,35 @@
 
 Now with 100% Gitter: [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/aztecrex/bash-util)
 
-I put these into a Dropbox folder then source them from
-```.bashrc``` on each machine I use.
+Here are common setups for some of the tools I use. They should be useful for both Linux and Mac (assuming homebrew).
 
-For example:
+I put these into a Dropbox folder then source them from each machine I use.
+
+For example, in ```bash_profile```, something like:
 
 ```bash
-for f in ~/Dropbox/Bash/setup_*.sh; do
-    . $f
-done
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc  # assume bashrc will source common
+else
+  _zero=~/Dropbox/Bash/zero.sh
+  if [ -f $_zero ]; then
+    source $_zero
+    bash-util-common
+  fi
+  unset _zero
+fi
+bash-util-interactive
+```
+
+Then in ```.bashrc```:
+
+```bash
+_zero=~/Dropbox/Bash/zero.sh
+if [ -f $_zero ]; then
+  source $_zero
+  bash-util-common
+fi
+unset _zero
 ```
 
 ----
