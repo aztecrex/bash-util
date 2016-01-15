@@ -2,15 +2,33 @@
 
 Now with 100% Gitter: [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/aztecrex/bash-util)
 
-I put these into a Dropbox folder then source them from
-```.bashrc``` on each machine I use.
+I put these into a Dropbox folder then source them from each machine I use.
 
-For example:
+For example, in ```bash_profile```, something like:
 
 ```bash
-for f in ~/Dropbox/Bash/setup_*.sh; do
-    . $f
-done
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc  # assume bashrc will source common
+else
+  _zero=~/Dropbox/Bash/zero.sh
+  if [ -f $_zero ]; then
+    source $_zero
+    bash-util-common
+  fi
+  unset _zero
+fi
+bash-util-interactive
+```
+
+Then in ```.bashrc```, you might
+
+```bash
+_zero=~/Dropbox/Bash/zero.sh
+if [ -f $_zero ]; then
+  source $_zero
+  bash-util-common
+fi
+unset _zero
 ```
 
 ----
