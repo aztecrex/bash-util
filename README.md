@@ -1,7 +1,5 @@
 # Bash Util
 
-Now with 100% Gitter: [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/aztecrex/bash-util)
-
 Here are common setups for some of the tools I use. They should be useful for both Linux and Mac (assuming homebrew).
 
 I put these into a Dropbox folder then source them from each machine I use.
