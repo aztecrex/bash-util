@@ -56,9 +56,50 @@ aws-profile() {
   fi
 }
 
+# output in format for shell sourcing
+aws-session-export() {
+  if [ "$1" = "" ]; then
+    local region=$(aws configure get region)
+  else
+    local region="$1"
+  fi
+  echo "export AWS_DEFAULT_REGION=${region}"
+  aws sts get-session-token \
+    --query \
+       'Credentials |
+          join (`\n`,
+           values({
+             AccessKeyId: join(``, [`export AWS_ACCESS_KEY_ID=`,AccessKeyId]),
+             SecretAccessKey:join(``, [`export AWS_SECRET_ACCESS_KEY=`,SecretAccessKey]),
+             SessionToken:join(``, [`export AWS_SESSION_TOKEN=`,SessionToken])
+           }))' \
+    --output text
+}
+
+# output in format for docker run --env-file option
+aws-session-docker() {
+  if [ "$1" = "" ]; then
+    local region=$(aws configure get region)
+  else
+    local region="$1"
+  fi
+  echo "AWS_DEFAULT_REGION=${region}"
+  aws sts get-session-token \
+    --query \
+       'Credentials |
+          join (`\n`,
+           values({
+             AccessKeyId: join(``, [`AWS_ACCESS_KEY_ID=`,AccessKeyId]),
+             SecretAccessKey:join(``, [`AWS_SECRET_ACCESS_KEY=`,SecretAccessKey]),
+             SessionToken:join(``, [`AWS_SESSION_TOKEN=`,SessionToken])
+           }))' \
+    --output text
+}
+
 # tab completion for awscli
 if [ -f /usr/bin/aws_completer ]; then
   complete -C /usr/bin/aws_completer aws
 elif [ -f /usr/local/bin/aws_completer ]; then
   complete -C /usr/local/bin/aws_completer aws
 fi
+
