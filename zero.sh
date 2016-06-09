@@ -1,7 +1,7 @@
 # common functions
 
 am-mac() {
-  test "$OSTYPE" = "darwin15"
+  echo $OSTYPE | grep '^darwin' > /dev/null
 }
 
 am-linux() {
